@@ -113,7 +113,7 @@ with tab1:
                             2
                         )
 
-                # --- 2️⃣ Gun Detection ---
+                # --- 2️⃣ Knife Detection ---
                 results_gun = gun_model(frame, verbose=False, conf=0.5)
                 for r in results_gun:
                     for box in r.boxes:
@@ -121,7 +121,7 @@ with tab1:
                         cv2.rectangle(annotated_frame, (x1, y1), (x2, y2), (0, 0, 255), 2)
                         cv2.putText(
                             annotated_frame,
-                            "!! GUN !!",
+                            "!! KNIFE !!",
                             (x1, y1 - 10),
                             cv2.FONT_HERSHEY_SIMPLEX,
                             0.8,
@@ -136,11 +136,11 @@ with tab1:
                             _, buffer = cv2.imencode('.jpg', frame)
                             st.session_state.alerts.append({
                                 "time": now.strftime("%H:%M:%S"),
-                                "event": f"Gun Detected",
+                                "event": f"Knife Detected",
                                 "screenshot": buffer.tobytes(),
                                 "type": "threat"
                             })
-                            st.toast("🚨 Gun Detected", icon="🚨")
+                            st.toast("🚨 Knife Detected", icon="🚨")
 
                 frame_placeholder.image(annotated_frame, channels="BGR")
 
@@ -152,7 +152,7 @@ with tab1:
 # --- 2️⃣ Face Registration ---
 with tab2:
     st.header("Register Known Individuals")
-    st.info("Upload a clear photo. Name should have no spaces (e.g., 'puneet_boina').")
+    st.info("Upload a clear photo. Name should have no spaces (e.g., 'jayanth_ramakrishnan').")
     col1, col2 = st.columns([1, 2])
 
     with col1:
