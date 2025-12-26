@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+.git/
+.gitignore
+.env
+.vscode/
+.idea/
+
+# Ignore runtime face data
+registered_faces/*
+!registered_faces/.gitkeep
